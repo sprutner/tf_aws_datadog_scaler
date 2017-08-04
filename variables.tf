@@ -7,7 +7,7 @@ variable "environment" {
 }
 
 variable "asg_name" {
-  descriptio = "Name of the Autoscaling Group to apply this to. "
+  description = "Name of the Autoscaling Group to apply this to. "
 }
 
 variable "scale_out_monitor_name" {
