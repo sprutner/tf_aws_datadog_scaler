@@ -1,6 +1,7 @@
 # Datadog Autoscaler #
 
 *Version 0.1*
+
 First working POC.
 
 Enhancements to come:
