@@ -5,7 +5,7 @@ Example main.tf:
 ```hcl
 #Load up API Gateway Lambda integration for Nomad Continuous Deployment
 module "nomad_node_memory" {
-  source                  = "git::ssh://github.com/sprutner/tf_aws_datadog_autoscaler.git?ref=master"
+  source                  = "github.com/sprutner/tf_aws_datadog_autoscaler"
   name                    = "Memory"
   environment             = "${var.environment}"
   asg_name                = "${module.nomad_nodes.asg_name}"
