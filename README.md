@@ -1,6 +1,6 @@
-## Datadog Autoscaler ##
+# Datadog Autoscaler #
 
-# Pre-requisites #
+## Pre-requisites ##
 * Autoscaling group resource name, either outputted from a module, or present in the root (see `asg_name` for example)
 * Datadog provider set up already with API and APP keys
 
