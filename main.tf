@@ -125,7 +125,7 @@ resource "datadog_monitor" "asg_mem_low" {
   depends_on         = ["aws_lambda_function.autoscaling"]
   name               = "${upper(var.environment)}-${var.scale_out_monitor_name}"
   type               = "metric alert"
-  message            = "@sns-${aws_sns_topic.autoscaling.name} 1\n${var.name} ${var.asg_name} ${aws_autoscaling_policy.out.name} 71"
+  message            = "@sns-${aws_sns_topic.autoscaling.name} 1\n${var.name} ${var.asg_name} ${aws_autoscaling_policy.out.name} 59"
   escalation_message = "@sns-${aws_sns_topic.autoscaling.name} 1\n${var.name} ${var.asg_name} ${aws_autoscaling_policy.out.name} 59"
 
   query = "avg(last_1m):avg:system.mem.free{autoscaling_group:${lower(var.asg_name)}} < ${var.out_critical_threshold}"
@@ -152,7 +152,7 @@ resource "datadog_monitor" "asg_mem_high" {
   name               = "${upper(var.environment)}-${var.scale_in_monitor_name}"
   type               = "metric alert"
   message            = "@sns-${aws_sns_topic.autoscaling.name} 1\n${var.name} ${var.asg_name} ${aws_autoscaling_policy.in.name} 41"
-  escalation_message = "@sns-${aws_sns_topic.autoscaling.name} 1\n${var.name} ${var.asg_name} ${aws_autoscaling_policy.in.name} 31"
+  escalation_message = "@sns-${aws_sns_topic.autoscaling.name} 1\n${var.name} ${var.asg_name} ${aws_autoscaling_policy.in.name} 41"
 
   query = "avg(last_5m):avg:${var.query_metric}{autoscaling_group:${lower(var.asg_name)}} > ${var.in_critical_threshold}"
 
