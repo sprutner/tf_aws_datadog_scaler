@@ -15,16 +15,18 @@ module "nomad_node_memory" {
   source                  = "github.com/sprutner/tf_aws_datadog_scaler"
   name                    = "Memory"
   environment             = "${var.environment}"
-  asg_name                = "${module.nomad_nodes.asg_name}"
-  scale_out_monitor_name  = "Nomad memory is low"
-  scale_in_monitor_name   = "Nomad memory is high"
-  out_ok_threshold        = 1200000001
-  out_warning_threshold   = 1200000000
+  asg_name                = "${module.nomad_client.asg_name}"
+  scale_out_monitor_name  = "Nomad worker memory is low"
+  scale_in_monitor_name   = "Nomad worker memory is high"
+  out_ok_threshold        = 1000000002
+  out_warning_threshold   = 1000000001
   out_critical_threshold  = 1000000000
   out_renotify_interval   = 5
-  in_ok_threshold         = 1499999999
-  in_warning_threshold    = 1700000000
+  in_ok_threshold         = 1799999999
+  in_warning_threshold    = 1800000000
   in_critical_threshold   = 2000000000
   in_renotify_interval    = 7
+  query_metric            = "system.mem.free"
+
 }
 ```
