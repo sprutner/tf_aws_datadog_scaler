@@ -21,35 +21,35 @@ variable "scale_in_monitor_name" {
 ## Thresholds ##
 
 # Scaling out #
-variable = "out_ok_threshold" {
-  description "OK Threshold for scale_out"
+variable "out_ok_threshold" {
+  description = "OK Threshold for scale_out"
 }
 
-variable = "out_warning_threshold" {
-  description "warning Threshold for scale_out"
+variable "out_warning_threshold" {
+  description = "warning Threshold for scale_out"
 }
 
-variable = "out_critical_threshold" {
-  description "Critical Threshold for scale_out"
+variable "out_critical_threshold" {
+  description = "Critical Threshold for scale_out"
 }
 
-variable = "out_renotify_interval" {
-  description "OK Threshold for scale_out"
+variable "out_renotify_interval" {
+  description = "OK Threshold for scale_out"
 }
 
 # Scaling in #
-variable = "in_ok_threshold" {
-  description "OK Threshold for scale_out"
+variable "in_ok_threshold" {
+  description = "OK Threshold for scale_out"
 }
 
-variable = "in_warning_threshold" {
-  description "warning Threshold for scale_out"
+variable "in_warning_threshold" {
+  description = "warning Threshold for scale_out"
 }
 
-variable = "in_critical_threshold" {
-  description "Critical Threshold for scale_out"
+variable "in_critical_threshold" {
+  description = "Critical Threshold for scale_out"
 }
 
-variable = "in_renotify_interval" {
-  description "OK Threshold for scale_out"
+variable "in_renotify_interval" {
+  description = "OK Threshold for scale_out"
 }
