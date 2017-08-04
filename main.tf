@@ -128,7 +128,7 @@ resource "datadog_monitor" "asg_mem_low" {
   message            = "@sns-${aws_sns_topic.autoscaling.name} 1\n${var.name} ${var.asg_name} ${aws_autoscaling_policy.out.name} 71"
   escalation_message = "@sns-${aws_sns_topic.autoscaling.name} 1\n${var.name} ${var.asg_name} ${aws_autoscaling_policy.out.name} 59"
 
-  query = "avg(last_1m):avg:system.mem.free{autoscaling_group:${lower(aws_autoscaling_group.nomad-asg.name)}} < ${var.out_critical_threshold}"
+  query = "avg(last_1m):avg:system.mem.free{autoscaling_group:${lower(var.asg_name)}} < ${var.out_critical_threshold}"
 
   thresholds {
     ok       = "${var.out_ok_threshold}"

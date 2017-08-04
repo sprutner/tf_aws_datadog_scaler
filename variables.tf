@@ -53,3 +53,7 @@ variable "in_critical_threshold" {
 variable "in_renotify_interval" {
   description = "OK Threshold for scale_out"
 }
+
+variable "query_metric" {
+  description = "The metric you are querying, EG, system.mem.free"
+}
