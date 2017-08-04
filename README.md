@@ -12,7 +12,7 @@ Simply paste the following block into your terraform config, and change the valu
 ```hcl
 #Load up API Gateway Lambda integration for Nomad Continuous Deployment
 module "nomad_node_memory" {
-  source                  = "github.com/sprutner/tf_aws_datadog_autoscaler"
+  source                  = "github.com/sprutner/tf_aws_datadog_scaler"
   name                    = "Memory"
   environment             = "${var.environment}"
   asg_name                = "${module.nomad_nodes.asg_name}"
