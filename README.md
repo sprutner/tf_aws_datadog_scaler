@@ -1,6 +1,12 @@
 ## Datadog Autoscaler ##
 
-Example main.tf:
+## Usage ##
+
+# Pre-requisites #
+* Autoscaling group resource name, either outputted from a module, or present in the root (see `asg_name` for example)
+* Datadog provider set up already with API and APP keys
+
+# Example main.tf: #
 
 ```hcl
 #Load up API Gateway Lambda integration for Nomad Continuous Deployment
