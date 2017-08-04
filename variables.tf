@@ -11,11 +11,11 @@ variable "asg_name" {
 }
 
 variable "scale_out_monitor_name" {
-  desription = "What you want to name the scale out monitor name E.G. Nomad cluster memory low"
+  description = "What you want to name the scale out monitor name E.G. Nomad cluster memory low"
 }
 
 variable "scale_in_monitor_name" {
-  desription = "What you want to name the scale out monitor name E.G. Nomad cluster memory high"
+  description = "What you want to name the scale out monitor name E.G. Nomad cluster memory high"
 }
 
 ## Thresholds ##
