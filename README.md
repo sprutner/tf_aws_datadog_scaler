@@ -1,10 +1,11 @@
 ## Datadog Autoscaler ##
 
-## Usage ##
-
 # Pre-requisites #
 * Autoscaling group resource name, either outputted from a module, or present in the root (see `asg_name` for example)
 * Datadog provider set up already with API and APP keys
+
+### Usage ###
+Simply paste the following block into your terraform config, and change the values as you desire.
 
 # Example main.tf: #
 
