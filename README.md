@@ -18,9 +18,8 @@ Simply paste the following block into your terraform config, and change the valu
 # Example main.tf: #
 
 ```hcl
-#Load up API Gateway Lambda integration for Nomad Continuous Deployment
 module "nomad_node_memory" {
-  source                  = "github.com/sprutner/tf_aws_datadog_scaler"
+  source                  = "git::ssh://bitbucket.org/credomobile/tf_aws_datadog_autoscaler.git?ref=master"
   name                    = "Memory"
   environment             = "${var.environment}"
   asg_name                = "${module.nomad_client.asg_name}"
@@ -35,7 +34,6 @@ module "nomad_node_memory" {
   in_critical_threshold   = 2000000000
   in_renotify_interval    = 7
   query_metric            = "system.mem.free"
-
 }
 ```
 
