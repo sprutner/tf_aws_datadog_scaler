@@ -63,13 +63,13 @@ resource "aws_iam_policy_attachment" "autoscaling" {
 
 # Lambda function for triggering an ASG event from SNS
 resource "aws_lambda_function" "autoscaling" {
-    filename          = "autoscaling.py.zip"
+    filename          = "${path.module}/autoscaling.py.zip"
     function_name     = "${var.environment}-${var.name}-autoscaling"
     runtime           = "python2.7"
     timeout           = "30"
     role              = "${aws_iam_role.autoscaling_trust.arn}"
     handler           = "autoscaling.lambda_handler"
-    source_code_hash  = "${base64sha256(file("autoscaling.py.zip"))}"
+    source_code_hash  = "${base64sha256(file("${path.module}/autoscaling.py.zip"))}"
 }
 
 # Permission for SNS to trigger function
