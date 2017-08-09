@@ -6,6 +6,11 @@ variable "environment" {
   description = "Environment this is running in"
 }
 
+variable "avg_by" {
+  description = "What to average by, E.G. min, max, avg"
+  default     = "avg"
+}
+
 variable "asg_name" {
   description = "Name of the Autoscaling Group to apply this to. "
 }
