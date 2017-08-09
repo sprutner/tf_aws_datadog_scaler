@@ -6,11 +6,6 @@ variable "environment" {
   description = "Environment this is running in"
 }
 
-variable "avg_by" {
-  description = "What to average by, E.G. min, max, avg"
-  default     = "avg"
-}
-
 variable "asg_name" {
   description = "Name of the Autoscaling Group to apply this to. "
 }
@@ -42,6 +37,11 @@ variable "out_renotify_interval" {
   description = "OK Threshold for scale_out"
 }
 
+variable "out_avg_by" {
+  description = "What to average by, E.G. min, max, avg"
+  default     = "max"
+}
+
 # Scaling in #
 variable "in_ok_threshold" {
   description = "OK Threshold for scale_out"
@@ -57,6 +57,11 @@ variable "in_critical_threshold" {
 
 variable "in_renotify_interval" {
   description = "OK Threshold for scale_out"
+}
+
+variable "in_avg_by" {
+  description = "What to average by, E.G. min, max, avg"
+  default     = "avg"
 }
 
 variable "query_metric" {
