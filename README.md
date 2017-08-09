@@ -15,6 +15,9 @@ Enhancements to come:
 ### Usage ###
 Simply paste the following block into your terraform config, and change the values as you desire.
 
+In the below example, scale-out is based on maximum free memory across the cluster, while scaling in uses the average over the cluster.
+
+You can override these defaults with `out_avg_by` and `in_avg_by`
 # Example main.tf: #
 
 ```hcl
