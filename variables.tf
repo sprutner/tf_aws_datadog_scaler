@@ -67,3 +67,39 @@ variable "in_avg_by" {
 variable "query_metric" {
   description = "The metric you are querying, EG, system.mem.free"
 }
+
+## Extra mmonitor array
+variable "in_extra_name" {
+  type = "list"
+}
+
+variable "in_extra_ok_threshold" {
+  description = "OK Threshold for scale_out"
+  type        = "list"
+}
+
+variable "in_extra_warning_threshold" {
+  description = "warning Threshold for scale_out"
+  type        = "list"
+}
+
+variable "in_extra_critical_threshold" {
+  description = "Critical Threshold for scale_out"
+  type        = "list"
+}
+
+variable "in_extra_renotify_interval" {
+  description = "OK Threshold for scale_out"
+  type        = "list"
+}
+
+variable "in_extra_avg_by" {
+  description = "What to average by, E.G. min, max, avg"
+  type        = "list"
+  default     = "avg"
+}
+
+variable "in_extra_query_metric" {
+  description = "The metric you are querying, EG, system.mem.free"
+  type        = "list"
+}

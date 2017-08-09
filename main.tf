@@ -171,3 +171,30 @@ resource "datadog_monitor" "asg_mem_high" {
 
   tags = ["environment:${var.environment}"]
   }
+
+  #Extra Scale in
+  resource "datadog_monitor" "asg_mem_high" {
+    count              = "${length(var.in_extra_name)}"
+    depends_on         = ["aws_lambda_function.autoscaling"]
+    name               = "${upper(var.environment)}-${element(var.scale_in_extra_name, count.index)}"
+    type               = "metric alert"
+    message            = "@sns-${aws_sns_topic.autoscaling.name} 1\n${var.name} ${var.asg_name} ${aws_autoscaling_policy.in.name} 41"
+    escalation_message = "@sns-${aws_sns_topic.autoscaling.name} 1\n${var.name} ${var.asg_name} ${aws_autoscaling_policy.in.name} 41"
+
+    query = "avg(last_5m):${element(var.in_extra_avg_by, count.index)}:${lookup(var.in_extra_query_metric, count.index)}{autoscaling_group:${lower(var.asg_name)}} > ${element(var.in_extra_critical_threshold, count.index)}"
+
+    thresholds {
+      ok       = "${element(var.in_extra_ok_threshold, count.index)}"
+      warning  = "${element(var.in_extra_warning_threshold, count.index)}"
+      critical = "${element(var.in_extra_critical_threshold, count.index)}"
+    }
+
+    notify_no_data    = false
+    renotify_interval = "${element(var.in_extra_renotify_interval, count.index)}"
+    require_full_window = false
+
+    notify_audit = false
+    include_tags = true
+
+    tags = ["environment:${var.environment}"]
+    }
