@@ -23,20 +23,27 @@ You can override these defaults with `out_avg_by` and `in_avg_by`
 ```hcl
 module "nomad_node_memory" {
   source                  = "git::ssh://bitbucket.org/credomobile/tf_aws_datadog_autoscaler.git?ref=master"
-  name                    = "Memory"
-  environment             = "${var.environment}"
-  asg_name                = "${module.nomad_client.asg_name}"
-  scale_out_monitor_name  = "Nomad worker memory is low"
-  scale_in_monitor_name   = "Nomad worker memory is high"
-  out_ok_threshold        = 1000000002
-  out_warning_threshold   = 1000000001
-  out_critical_threshold  = 1000000000
-  out_renotify_interval   = 5
-  in_ok_threshold         = 1799999999
-  in_warning_threshold    = 1800000000
-  in_critical_threshold   = 2000000000
-  in_renotify_interval    = 7
-  query_metric            = "system.mem.free"
+  name                        = "Memory"
+  environment                 = "${var.environment}"
+  asg_name                    = "${module.nomad_client.asg_name}"
+  scale_out_monitor_name      = "Nomad worker memory is low"
+  scale_in_monitor_name       = "Nomad worker memory is high"
+  out_ok_threshold            = 1000000002
+  out_warning_threshold       = 1000000001
+  out_critical_threshold      = 1000000000
+  out_renotify_interval       = 5
+  in_ok_threshold             = 1799999999
+  in_warning_threshold        = 1800000000
+  in_critical_threshold       = 2000000000
+  in_renotify_interval        = 7
+  query_metric                = "system.mem.free"
+  in_extra_name               = ["Nomad Max Mem Free Too High"]
+  in_extra_ok_threshold       = ["1799999999"]
+  in_extra_warning_threshold  = ["1800000000"]
+  in_extra_critical_threshold = ["2000000001"]
+  in_extra_renotify_interval  = [7]
+  in_extra_query_metric       = ["system.mem.free"]
+  in_extra_avg_by             = ["max"]
 }
 ```
 
